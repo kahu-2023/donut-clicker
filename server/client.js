@@ -22,15 +22,11 @@ function increment() {
     totalScore += scoreIncrement 
 }
 
-//Function to add increment to score total.
-
-function totalScore() {
-    
-}
-
 //Update total score in text content.
 
-
+function updateTotalScore() {
+    donut.textContent = totalScore
+}
 
 
 
