@@ -1,6 +1,5 @@
 const express = require('express')
 const hbs = require('express-handlebars')
-const { isUtf8 } = require('node:buffer')
 const server = express()
 const fs = require('node:fs/promises')
 // const routes = require('./routes.js')
@@ -15,8 +14,6 @@ server.engine('hbs', hbs.engine({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 server.set('views', __dirname + '/views')
 
-// server.use('/puppies', routes)
-
 // Routes
 
 server.get('/game', (req, res) => {
@@ -30,9 +27,7 @@ server.get('/game', (req, res) => {
 })
 
 server.get('/', (req, res) => {
-  // res.send('Pupparazzi')
 
-  // read puppies from data.json
   fs.readFile(__dirname + '/data/data.json', 'utf-8')
     .then((data) => {
       const parsedData = JSON.parse(data)
