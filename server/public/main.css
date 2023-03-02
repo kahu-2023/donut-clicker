@@ -1,6 +1,5 @@
 body {
   padding-top: 30px;
-  font-family:'Times New Roman', Times, serif;
   background-color: rgb(76, 239, 222);
   width: 500px;
   margin: auto;
@@ -29,6 +28,28 @@ p {
 
 .textBlack {
   color: black;
+}
+
+#upgradeArea {
+  padding-top: 110px;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  /* border: 10px solid pink; */
+}
+
+#donut {
+  padding-left: 35px;
+  /* border: 10px solid lightgreen; */
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  /* border: 10px solid darkblue; */
+  width: 500px;
+  height: 300px;
 }
 
 
