@@ -16,27 +16,41 @@ server.set('views', __dirname + '/views')
 
 // Routes
 
-server.get('/game', (req, res) => {
+server.get('/', (req, res) => {
   fs.readFile(__dirname + '/data/data.json', 'utf-8')
-    .then((player) => {
-      res.render('gamepage')
+  res.render('home')
+})
+
+// post routes retrieve data and save it somewhere
+// cannot get data and render pages
+server.post('/name/game', (req, res) => {
+  const nameInput = req.body.name
+  console.log(nameInput)
+  const stringifiedName = JSON.stringify(nameInput)
+  console.log(stringifiedName)
+  fs.writeFile(__dirname + '/data/data.json', stringifiedName)
+    .then(() => {
+      res.redirect('/name/game')
     })
     .catch((err) => {
       res.status(404).send(err.message)
     })
 })
 
-server.get('/', (req, res) => {
+server.get('/name/game', (req, res) => {
+  fs.readFile(__dirname + '/data/data.json')
+    .then((name) => {
+      const parsedName = JSON.parse(name)
+      const obj = {
+        name: parsedName,
+      }
 
-  fs.readFile(__dirname + '/data/data.json', 'utf-8')
-    .then((data) => {
-      const parsedData = JSON.parse(data)
-      // console.log(parsedData)
-      // returns data object array
-
-      res.render('home', parsedData)
+      res.render('gamepage', obj)
+      // res.render('gamepage', { name })
     })
-    .catch((err) => res.status(400).send(err.message))
+    .catch((err) => {
+      res.status(404).send(err.message)
+    })
 })
 
 module.exports = server
