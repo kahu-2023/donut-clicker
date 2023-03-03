@@ -33,7 +33,7 @@ function updateTotalScore() {
 //To do: complete upgrade variable by adding the element id
 
 // Variable for upgrade costs
-let upgradeCost = 1
+let upgradeCost = 100
 // Variable for upgrade elements
 const upgrades = document.getElementsByClassName('upgrades')
 for (let i = 0; i < upgrades.length; i++) {
@@ -50,7 +50,7 @@ function clickerUpgrade(evt) {
     updateTotalScore()
     increaseUpgradeCost()
     evt.target.remove()
-    return (scoreIncrement *= 2)
+    return (scoreIncrement *= 4)
   } else {
     console.log(`You need ${upgradeCost - totalScore} more donuts!`)
   }
