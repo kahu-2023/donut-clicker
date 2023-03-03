@@ -14,7 +14,7 @@ const donut = document.getElementById('donut')
 const statusPara = document.getElementById('status')
 const upgradePara = document.getElementById('upgradeCost')
 let upgradeCost = 100
-upgradePara.textContent = upgradeCost
+upgradePara.textContent = `Cost: ${upgradeCost}`
 //Attach an event listener to the donut that runs the increment to increase the score.
 
 donut.addEventListener('click', increment)
@@ -31,11 +31,10 @@ function increment() {
 
 function updateTotalScore() {
   total.textContent = totalScore
-  updateUpgradeCost()
 }
 
 function updateUpgradeCost() {
-  upgradePara.textContent = upgradeCost
+  upgradePara.textContent = `Cost: ${upgradeCost}`
 }
 
 //Ryan
@@ -56,6 +55,7 @@ function clickerUpgrade(evt) {
     totalScore -= upgradeCost
     updateTotalScore()
     increaseUpgradeCost()
+    updateUpgradeCost()
     evt.target.remove()
     return (scoreIncrement *= 4)
   } else {
