@@ -32,7 +32,7 @@ p {
 }
 
 #upgradeArea {
-  padding-top: 110px;
+  padding-top: 60px;
   display: flex;
   justify-content: left;
   flex-direction: column;
