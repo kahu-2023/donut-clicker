@@ -11,7 +11,10 @@ let scoreIncrement = 1
 //Get element by ID to identify the donut
 const total = document.getElementById('total')
 const donut = document.getElementById('donut')
-
+const statusPara = document.getElementById('status')
+const upgradePara = document.getElementById('upgradeCost')
+let upgradeCost = 100
+upgradePara.textContent = upgradeCost
 //Attach an event listener to the donut that runs the increment to increase the score.
 
 donut.addEventListener('click', increment)
@@ -19,6 +22,7 @@ donut.addEventListener('click', increment)
 //Function to increase score.
 
 function increment() {
+  statusPara.style = 'visibility: hidden'
   totalScore += scoreIncrement
   updateTotalScore()
 }
@@ -27,13 +31,16 @@ function increment() {
 
 function updateTotalScore() {
   total.textContent = totalScore
+  updateUpgradeCost()
+}
+
+function updateUpgradeCost() {
+  upgradePara.textContent = upgradeCost
 }
 
 //Ryan
 //To do: complete upgrade variable by adding the element id
 
-// Variable for upgrade costs
-let upgradeCost = 100
 // Variable for upgrade elements
 const upgrades = document.getElementsByClassName('upgrades')
 for (let i = 0; i < upgrades.length; i++) {
@@ -52,7 +59,9 @@ function clickerUpgrade(evt) {
     evt.target.remove()
     return (scoreIncrement *= 4)
   } else {
-    console.log(`You need ${upgradeCost - totalScore} more donuts!`)
+    statusPara.style = 'visibility: visible'
+    statusPara.style = 'color: red;'
+    statusPara.textContent = `You need ${upgradeCost - totalScore} more donuts!`
   }
 }
 
@@ -63,5 +72,3 @@ function increaseUpgradeCost() {
 
 // Stretch: a function for incremental upgrades
 function passiveUpgrade() {}
-
-// Stretch: error message for not enough donuts for
